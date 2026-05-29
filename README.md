@@ -1,5 +1,7 @@
 # One-Time Pad Encoder / Decoder
 
+**[🔗 Launch the app →](https://mrmath3.github.io/one-time-pad/)**
+
 A static, client-side classroom tool for encoding and decoding messages using the **CT No 1 English** one-time pad chart.
 
 ## What it does
@@ -61,17 +63,12 @@ python3 -m http.server 8000
 
 ## Deploying to GitHub Pages
 
-1. Create a new GitHub repository.
-2. Push this folder to it:
+This repo is already deployed at **https://mrmath3.github.io/one-time-pad/**.
 
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/one-time-pad.git
-git branch -M main
-git push -u origin main
-```
-
-3. In the repository **Settings → Pages**, set the source to `main` branch, `/ (root)`.
-4. Your app will be live at `https://YOUR_USERNAME.github.io/one-time-pad/`.
+To deploy your own fork:
+1. Fork this repository.
+2. In **Settings → Pages**, set the source to `main` branch, `/ (root)`.
+3. Your app will be live at `https://YOUR_USERNAME.github.io/one-time-pad/`.
 
 ## Running the self-tests
 
