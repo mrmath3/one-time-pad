@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>One-Time Pad Encoder / Decoder — CT No 1 English</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <header>
@@ -15,6 +15,7 @@
       <a href="#encode">Encode</a>
       <a href="#decode">Decode</a>
       <a href="#rules">Rules</a>
+      <a href="#resources">Resources</a>
     </nav>
   </header>
 
@@ -23,78 +24,54 @@
     <!-- ═══════════════════════ CHART ═══════════════════════ -->
     <section id="chart">
       <h2>CT No 1 English Chart</h2>
-      <div class="chart-wrapper">
-        <table class="chart-table">
-          <caption>Letter Mode</caption>
-          <thead>
-            <tr><th>Code</th><th>Character</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>A</td></tr>
-            <tr><td>2</td><td>E</td></tr>
-            <tr><td>3</td><td>I</td></tr>
-            <tr><td>4</td><td>N</td></tr>
-            <tr><td>5</td><td>O</td></tr>
-            <tr><td>6</td><td>T</td></tr>
-            <tr><td>70</td><td>B</td></tr>
-            <tr><td>71</td><td>C</td></tr>
-            <tr><td>72</td><td>D</td></tr>
-            <tr><td>73</td><td>F</td></tr>
-            <tr><td>74</td><td>G</td></tr>
-            <tr><td>75</td><td>H</td></tr>
-            <tr><td>76</td><td>J</td></tr>
-            <tr><td>77</td><td>K</td></tr>
-            <tr><td>78</td><td>L</td></tr>
-            <tr><td>79</td><td>M</td></tr>
-            <tr><td>80</td><td>P</td></tr>
-            <tr><td>81</td><td>Q</td></tr>
-            <tr><td>82</td><td>R</td></tr>
-            <tr><td>83</td><td>S</td></tr>
-            <tr><td>84</td><td>U</td></tr>
-            <tr><td>85</td><td>V</td></tr>
-            <tr><td>86</td><td>W</td></tr>
-            <tr><td>87</td><td>X</td></tr>
-            <tr><td>88</td><td>Y</td></tr>
-            <tr><td>89</td><td>Z</td></tr>
-          </tbody>
-        </table>
-
-        <table class="chart-table">
-          <caption>Special Codes</caption>
-          <thead>
-            <tr><th>Code</th><th>Character</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>90</td><td>FIG (toggle number/letter mode)</td></tr>
-            <tr><td>91</td><td>. (period)</td></tr>
-            <tr><td>92</td><td>: (colon)</td></tr>
-            <tr><td>93</td><td>' (apostrophe)</td></tr>
-            <tr><td>94</td><td>( ) (parenthesis)</td></tr>
-            <tr><td>95</td><td>+ (plus)</td></tr>
-            <tr><td>96</td><td>- (minus)</td></tr>
-            <tr><td>97</td><td>= (equals)</td></tr>
-            <tr><td>98</td><td>REQ</td></tr>
-            <tr><td>99</td><td>SPC (space)</td></tr>
-          </tbody>
-        </table>
-
-        <table class="chart-table">
-          <caption>Number Mode (after FIG 90)</caption>
-          <thead>
-            <tr><th>Code</th><th>Character</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>0</td><td>0</td></tr>
-            <tr><td>1</td><td>1</td></tr>
-            <tr><td>2</td><td>2</td></tr>
-            <tr><td>3</td><td>3</td></tr>
-            <tr><td>4</td><td>4</td></tr>
-            <tr><td>5</td><td>5</td></tr>
-            <tr><td>6</td><td>6</td></tr>
-            <tr><td>7</td><td>7</td></tr>
-            <tr><td>8</td><td>8</td></tr>
-            <tr><td>9</td><td>9</td></tr>
-          </tbody>
+      <div class="ct-chart-wrap">
+        <table class="ct-chart">
+          <tr class="ct-letters">
+            <td class="ct-cell"><div class="ct-char">CODE</div><div class="ct-code">0</div></td>
+            <td class="ct-cell"><div class="ct-char">A</div><div class="ct-code">1</div></td>
+            <td class="ct-cell"><div class="ct-char">E</div><div class="ct-code">2</div></td>
+            <td class="ct-cell"><div class="ct-char">I</div><div class="ct-code">3</div></td>
+            <td class="ct-cell"><div class="ct-char">N</div><div class="ct-code">4</div></td>
+            <td class="ct-cell"><div class="ct-char">O</div><div class="ct-code">5</div></td>
+            <td class="ct-cell"><div class="ct-char">T</div><div class="ct-code">6</div></td>
+            <td class="ct-title" colspan="3">CT No 1<br>English</td>
+          </tr>
+          <tr class="ct-letters">
+            <td class="ct-cell"><div class="ct-char">B</div><div class="ct-code">70</div></td>
+            <td class="ct-cell"><div class="ct-char">C</div><div class="ct-code">71</div></td>
+            <td class="ct-cell"><div class="ct-char">D</div><div class="ct-code">72</div></td>
+            <td class="ct-cell"><div class="ct-char">F</div><div class="ct-code">73</div></td>
+            <td class="ct-cell"><div class="ct-char">G</div><div class="ct-code">74</div></td>
+            <td class="ct-cell"><div class="ct-char">H</div><div class="ct-code">75</div></td>
+            <td class="ct-cell"><div class="ct-char">J</div><div class="ct-code">76</div></td>
+            <td class="ct-cell"><div class="ct-char">K</div><div class="ct-code">77</div></td>
+            <td class="ct-cell"><div class="ct-char">L</div><div class="ct-code">78</div></td>
+            <td class="ct-cell"><div class="ct-char">M</div><div class="ct-code">79</div></td>
+          </tr>
+          <tr class="ct-letters">
+            <td class="ct-cell"><div class="ct-char">P</div><div class="ct-code">80</div></td>
+            <td class="ct-cell"><div class="ct-char">Q</div><div class="ct-code">81</div></td>
+            <td class="ct-cell"><div class="ct-char">R</div><div class="ct-code">82</div></td>
+            <td class="ct-cell"><div class="ct-char">S</div><div class="ct-code">83</div></td>
+            <td class="ct-cell"><div class="ct-char">U</div><div class="ct-code">84</div></td>
+            <td class="ct-cell"><div class="ct-char">V</div><div class="ct-code">85</div></td>
+            <td class="ct-cell"><div class="ct-char">W</div><div class="ct-code">86</div></td>
+            <td class="ct-cell"><div class="ct-char">X</div><div class="ct-code">87</div></td>
+            <td class="ct-cell"><div class="ct-char">Y</div><div class="ct-code">88</div></td>
+            <td class="ct-cell"><div class="ct-char">Z</div><div class="ct-code">89</div></td>
+          </tr>
+          <tr class="ct-special">
+            <td class="ct-cell"><div class="ct-char">FIG</div><div class="ct-code">90</div></td>
+            <td class="ct-cell"><div class="ct-char">(.)</div><div class="ct-code">91</div></td>
+            <td class="ct-cell"><div class="ct-char">(:)</div><div class="ct-code">92</div></td>
+            <td class="ct-cell"><div class="ct-char">(')</div><div class="ct-code">93</div></td>
+            <td class="ct-cell"><div class="ct-char">( )</div><div class="ct-code">94</div></td>
+            <td class="ct-cell"><div class="ct-char">(+)</div><div class="ct-code">95</div></td>
+            <td class="ct-cell"><div class="ct-char">(-)</div><div class="ct-code">96</div></td>
+            <td class="ct-cell"><div class="ct-char">(=)</div><div class="ct-code">97</div></td>
+            <td class="ct-cell"><div class="ct-char">REQ</div><div class="ct-code">98</div></td>
+            <td class="ct-cell"><div class="ct-char">SPC</div><div class="ct-code">99</div></td>
+          </tr>
         </table>
       </div>
     </section>
@@ -136,21 +113,18 @@
 
       <div class="field-group" id="enc-result-group" style="display:none">
         <label>Encoded message (raw)</label>
-        <div class="output-box mono" id="enc-raw" aria-live="polite"></div>
+        <div class="output-with-copy">
+          <div class="output-box mono" id="enc-raw" aria-live="polite"></div>
+          <button class="copy-btn" id="enc-copy-raw" type="button">Copy</button>
+        </div>
       </div>
 
       <div class="field-group" id="enc-grouped-group" style="display:none">
         <label>Encoded message (grouped every 5 digits)</label>
-        <div class="output-box mono" id="enc-grouped" aria-live="polite"></div>
-      </div>
-
-      <div class="copy-row" id="enc-copy-row" style="display:none">
-        <button id="enc-copy" type="button">Copy</button>
-        <label class="checkbox-label">
-          <input type="checkbox" id="enc-copy-grouped" />
-          Copy grouped output with spaces
-        </label>
-        <span class="copy-feedback" id="enc-copy-feedback" aria-live="polite"></span>
+        <div class="output-with-copy">
+          <div class="output-box mono" id="enc-grouped" aria-live="polite"></div>
+          <button class="copy-btn" id="enc-copy-grouped-btn" type="button">Copy</button>
+        </div>
       </div>
 
       <div class="hint error" id="enc-error" aria-live="assertive"></div>
@@ -223,6 +197,49 @@
           <li>Immediate destruction of the pad after use</li>
         </ul>
         <p>Browser-generated pads are <em>not</em> suitable for real cryptographic security.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ RESOURCES ═══════════════════ -->
+    <section id="resources" class="resources-section">
+      <h2>Lesson Resources for Teachers</h2>
+      <p class="resources-subtitle">Free classroom materials to go along with this tool — printable worksheet and an editable version you can adapt for your students.</p>
+      <div class="resource-cards">
+
+        <a href="https://drive.google.com/file/d/18QyKsM7dishVA_fcHeOeohUJq_LX-UaT/view?usp=drive_link"
+           target="_blank" rel="noopener" class="resource-card resource-card--pdf">
+          <div class="resource-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="17" x2="15" y2="17"/>
+            </svg>
+          </div>
+          <div class="resource-info">
+            <div class="resource-title">Printable Worksheet</div>
+            <div class="resource-desc">Ready-to-print PDF lesson for classroom use</div>
+          </div>
+          <div class="resource-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <a href="https://docs.google.com/document/d/18Wa5ZXUqa8TtezZIRP97wgzpOsB7jN7m/edit?usp=drive_link&ouid=115422258206947088634&rtpof=true&sd=true"
+           target="_blank" rel="noopener" class="resource-card resource-card--doc">
+          <div class="resource-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="17" x2="12" y2="17"/>
+            </svg>
+          </div>
+          <div class="resource-info">
+            <div class="resource-title">Editable Lesson</div>
+            <div class="resource-desc">Google Doc &amp; Word format — customize for your class</div>
+          </div>
+          <div class="resource-arrow" aria-hidden="true">↗</div>
+        </a>
+
       </div>
     </section>
 

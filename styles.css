@@ -84,47 +84,48 @@ section h2 {
   border-bottom: 2px solid var(--accent);
 }
 
-/* ── Chart tables ─────────────────────────────────────────── */
-.chart-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
+/* ── CT Chart grid ────────────────────────────────────────── */
+.ct-chart-wrap {
+  overflow-x: auto;
 }
 
-.chart-table {
+.ct-chart {
   border-collapse: collapse;
-  font-size: .9rem;
-  flex: 0 0 auto;
+  border: 2px solid #888;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.chart-table caption {
-  font-weight: 600;
-  font-size: .85rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  margin-bottom: .35rem;
-  text-align: left;
-}
-
-.chart-table th,
-.chart-table td {
-  border: 1px solid var(--border);
-  padding: .3rem .7rem;
+.ct-chart td {
+  border: 2px solid #888;
   text-align: center;
+  vertical-align: middle;
+  padding: .2rem .45rem;
+  min-width: 2.6rem;
 }
 
-.chart-table th {
-  background: var(--accent);
-  color: var(--primary-dark);
-  font-weight: 600;
-  font-size: .8rem;
-  text-transform: uppercase;
-  letter-spacing: .05em;
+.ct-letters .ct-cell { background: #FFFF80; }
+.ct-special .ct-cell { background: #FFC050; }
+
+.ct-title {
+  background: #FFC050;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  vertical-align: middle;
+  padding: .3rem .5rem;
 }
 
-.chart-table tbody tr:nth-child(even) { background: var(--bg); }
-.chart-table td:first-child { font-family: var(--mono); font-weight: 700; color: var(--primary); }
+.ct-cell .ct-char {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ct-cell .ct-code {
+  font-size: .82rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
 
 /* ── Form elements ────────────────────────────────────────── */
 .field-group {
@@ -219,31 +220,21 @@ button {
 button:hover { background: var(--primary-dark); }
 button:active { transform: scale(.98); }
 
-/* ── Copy row ─────────────────────────────────────────────── */
-.copy-row {
+/* ── Output + inline copy button ──────────────────────────── */
+.output-with-copy {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .75rem;
-  margin-top: .5rem;
-  margin-bottom: 1rem;
+  align-items: flex-start;
+  gap: .5rem;
 }
 
-.checkbox-label {
-  display: flex;
-  align-items: center;
-  gap: .4rem;
-  font-size: .9rem;
-  color: var(--muted);
-  cursor: pointer;
+.output-with-copy .output-box {
+  flex: 1;
 }
 
-.checkbox-label input { width: auto; cursor: pointer; }
-
-.copy-feedback {
-  font-size: .88rem;
-  color: var(--success);
-  font-weight: 600;
+.copy-btn {
+  flex-shrink: 0;
+  padding: .4rem .8rem;
+  font-size: .85rem;
 }
 
 /* ── Hints & validation ───────────────────────────────────── */
@@ -301,6 +292,90 @@ button:active { transform: scale(.98); }
 
 .rules-content p { margin-top: .5rem; }
 
+/* ── Resources section ────────────────────────────────────── */
+.resources-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.resources-section h2 {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+
+.resources-subtitle {
+  color: rgba(255,255,255,.88);
+  font-size: .95rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.resource-cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.resource-card {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: #fff;
+  transition: background .2s, transform .15s, box-shadow .15s;
+}
+
+.resource-card:hover {
+  background: rgba(255,255,255,.25);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+
+.resource-icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resource-icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.resource-card--pdf  .resource-icon { background: #c0392b; }
+.resource-card--doc  .resource-icon { background: #2471a3; }
+
+.resource-title {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.resource-desc {
+  font-size: .82rem;
+  color: rgba(255,255,255,.78);
+  margin-top: .2rem;
+  line-height: 1.4;
+}
+
+.resource-arrow {
+  margin-left: auto;
+  font-size: 1.15rem;
+  opacity: .65;
+  padding-left: .5rem;
+}
+
 /* ── Footer ───────────────────────────────────────────────── */
 footer {
   text-align: center;
@@ -314,5 +389,4 @@ footer {
   section { padding: 1rem; }
   .chart-wrapper { flex-direction: column; }
   .pad-controls { flex-direction: column; align-items: flex-start; }
-  .copy-row { flex-direction: column; align-items: flex-start; }
 }

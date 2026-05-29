@@ -273,12 +273,10 @@ function setText(id, value) { el(id).textContent = value; }
 function showError(id, msg) { el(id).textContent = msg; }
 function clearError(id) { el(id).textContent = ''; }
 
-let copyFeedbackTimer = null;
-
-function showCopyFeedback(msg) {
-  el('enc-copy-feedback').textContent = msg;
-  clearTimeout(copyFeedbackTimer);
-  copyFeedbackTimer = setTimeout(() => { el('enc-copy-feedback').textContent = ''; }, 2000);
+function flashCopyBtn(btnId) {
+  const btn = el(btnId);
+  btn.textContent = 'Copied!';
+  setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
 }
 
 // ── Encode UI ─────────────────────────────────────────────────────────────────
@@ -323,7 +321,6 @@ function tryEncrypt() {
 
   el('enc-result-group').style.display = 'none';
   el('enc-grouped-group').style.display = 'none';
-  el('enc-copy-row').style.display = 'none';
 
   if (!currentNumeric) return;
 
@@ -349,7 +346,6 @@ function tryEncrypt() {
     setText('enc-grouped', groupDigits(encoded));
     el('enc-result-group').style.display = '';
     el('enc-grouped-group').style.display = '';
-    el('enc-copy-row').style.display = '';
   } catch (e) {
     showError('enc-error', e.message);
   }
@@ -366,22 +362,20 @@ function handleGeneratePad() {
   tryEncrypt();
 }
 
-function handleCopy() {
-  const useGrouped = el('enc-copy-grouped').checked;
-  const text = useGrouped
-    ? el('enc-grouped').textContent
-    : el('enc-raw').textContent;
-
-  if (!text || text === '—') {
-    showCopyFeedback('Nothing to copy.');
-    return;
-  }
-
+function handleCopyRaw() {
+  const text = el('enc-raw').textContent;
+  if (!text || text === '—') return;
   navigator.clipboard.writeText(text).then(() => {
-    showCopyFeedback('Copied!');
-  }).catch(() => {
-    showCopyFeedback('Copy failed — try selecting manually.');
-  });
+    flashCopyBtn('enc-copy-raw');
+  }).catch(() => {});
+}
+
+function handleCopyGrouped() {
+  const text = el('enc-grouped').textContent;
+  if (!text || text === '—') return;
+  navigator.clipboard.writeText(text).then(() => {
+    flashCopyBtn('enc-copy-grouped-btn');
+  }).catch(() => {});
 }
 
 // ── Decode UI ─────────────────────────────────────────────────────────────────
@@ -425,7 +419,8 @@ document.addEventListener('DOMContentLoaded', () => {
   el('enc-pad').addEventListener('input', tryEncrypt);
   el('enc-pad-extra').addEventListener('input', () => {});
   el('enc-generate-pad').addEventListener('click', handleGeneratePad);
-  el('enc-copy').addEventListener('click', handleCopy);
+  el('enc-copy-raw').addEventListener('click', handleCopyRaw);
+  el('enc-copy-grouped-btn').addEventListener('click', handleCopyGrouped);
 
   el('dec-encoded').addEventListener('input', tryDecode);
   el('dec-pad').addEventListener('input', tryDecode);
