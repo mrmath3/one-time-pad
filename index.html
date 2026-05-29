@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One-Time Pad Encoder / Decoder — CT No 1 English</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>One-Time Pad Encoder &amp; Decoder</h1>
+    <p class="subtitle">CT No 1 English Chart — Classroom Edition</p>
+    <nav>
+      <a href="#chart">Chart</a>
+      <a href="#encode">Encode</a>
+      <a href="#decode">Decode</a>
+      <a href="#rules">Rules</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════ CHART ═══════════════════════ -->
+    <section id="chart">
+      <h2>CT No 1 English Chart</h2>
+      <div class="chart-wrapper">
+        <table class="chart-table">
+          <caption>Letter Mode</caption>
+          <thead>
+            <tr><th>Code</th><th>Character</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>A</td></tr>
+            <tr><td>2</td><td>E</td></tr>
+            <tr><td>3</td><td>I</td></tr>
+            <tr><td>4</td><td>N</td></tr>
+            <tr><td>5</td><td>O</td></tr>
+            <tr><td>6</td><td>T</td></tr>
+            <tr><td>70</td><td>B</td></tr>
+            <tr><td>71</td><td>C</td></tr>
+            <tr><td>72</td><td>D</td></tr>
+            <tr><td>73</td><td>F</td></tr>
+            <tr><td>74</td><td>G</td></tr>
+            <tr><td>75</td><td>H</td></tr>
+            <tr><td>76</td><td>J</td></tr>
+            <tr><td>77</td><td>K</td></tr>
+            <tr><td>78</td><td>L</td></tr>
+            <tr><td>79</td><td>M</td></tr>
+            <tr><td>80</td><td>P</td></tr>
+            <tr><td>81</td><td>Q</td></tr>
+            <tr><td>82</td><td>R</td></tr>
+            <tr><td>83</td><td>S</td></tr>
+            <tr><td>84</td><td>U</td></tr>
+            <tr><td>85</td><td>V</td></tr>
+            <tr><td>86</td><td>W</td></tr>
+            <tr><td>87</td><td>X</td></tr>
+            <tr><td>88</td><td>Y</td></tr>
+            <tr><td>89</td><td>Z</td></tr>
+          </tbody>
+        </table>
+
+        <table class="chart-table">
+          <caption>Special Codes</caption>
+          <thead>
+            <tr><th>Code</th><th>Character</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>90</td><td>FIG (toggle number/letter mode)</td></tr>
+            <tr><td>91</td><td>. (period)</td></tr>
+            <tr><td>92</td><td>: (colon)</td></tr>
+            <tr><td>93</td><td>' (apostrophe)</td></tr>
+            <tr><td>94</td><td>( ) (parenthesis)</td></tr>
+            <tr><td>95</td><td>+ (plus)</td></tr>
+            <tr><td>96</td><td>- (minus)</td></tr>
+            <tr><td>97</td><td>= (equals)</td></tr>
+            <tr><td>98</td><td>REQ</td></tr>
+            <tr><td>99</td><td>SPC (space)</td></tr>
+          </tbody>
+        </table>
+
+        <table class="chart-table">
+          <caption>Number Mode (after FIG 90)</caption>
+          <thead>
+            <tr><th>Code</th><th>Character</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0</td></tr>
+            <tr><td>1</td><td>1</td></tr>
+            <tr><td>2</td><td>2</td></tr>
+            <tr><td>3</td><td>3</td></tr>
+            <tr><td>4</td><td>4</td></tr>
+            <tr><td>5</td><td>5</td></tr>
+            <tr><td>6</td><td>6</td></tr>
+            <tr><td>7</td><td>7</td></tr>
+            <tr><td>8</td><td>8</td></tr>
+            <tr><td>9</td><td>9</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ ENCODE ═══════════════════════ -->
+    <section id="encode">
+      <h2>Encode a Message</h2>
+
+      <div class="field-group">
+        <label for="enc-plaintext">Plaintext message</label>
+        <textarea id="enc-plaintext" rows="3" placeholder="Type your message here…" autocomplete="off" spellcheck="false"></textarea>
+        <div class="hint" id="enc-ignored-notice" aria-live="polite"></div>
+      </div>
+
+      <div class="field-group">
+        <label>Cleaned message (uppercase)</label>
+        <div class="output-box" id="enc-cleaned" aria-live="polite">—</div>
+      </div>
+
+      <div class="field-group">
+        <label>Numeric plaintext string</label>
+        <div class="output-box mono" id="enc-numeric" aria-live="polite">—</div>
+        <div class="hint" id="enc-numeric-len"></div>
+      </div>
+
+      <div class="field-group">
+        <label for="enc-pad">One-time pad (digits only)</label>
+        <textarea id="enc-pad" rows="2" placeholder="Enter pad digits or generate below…" autocomplete="off" spellcheck="false"></textarea>
+        <div class="hint" id="enc-pad-status" aria-live="polite"></div>
+      </div>
+
+      <div class="pad-controls">
+        <div class="pad-length-row">
+          <label for="enc-pad-extra">Extra pad digits beyond minimum:</label>
+          <input type="number" id="enc-pad-extra" value="5" min="0" max="9999" />
+        </div>
+        <button id="enc-generate-pad" type="button">Generate Random Pad</button>
+      </div>
+
+      <div class="field-group" id="enc-result-group" style="display:none">
+        <label>Encoded message (raw)</label>
+        <div class="output-box mono" id="enc-raw" aria-live="polite"></div>
+      </div>
+
+      <div class="field-group" id="enc-grouped-group" style="display:none">
+        <label>Encoded message (grouped every 5 digits)</label>
+        <div class="output-box mono" id="enc-grouped" aria-live="polite"></div>
+      </div>
+
+      <div class="copy-row" id="enc-copy-row" style="display:none">
+        <button id="enc-copy" type="button">Copy</button>
+        <label class="checkbox-label">
+          <input type="checkbox" id="enc-copy-grouped" />
+          Copy grouped output with spaces
+        </label>
+        <span class="copy-feedback" id="enc-copy-feedback" aria-live="polite"></span>
+      </div>
+
+      <div class="hint error" id="enc-error" aria-live="assertive"></div>
+    </section>
+
+    <!-- ═══════════════════════ DECODE ═══════════════════════ -->
+    <section id="decode">
+      <h2>Decode a Message</h2>
+
+      <div class="field-group">
+        <label for="dec-encoded">Encoded message (digits, spaces OK)</label>
+        <textarea id="dec-encoded" rows="2" placeholder="Paste encoded digits here…" autocomplete="off" spellcheck="false"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label for="dec-pad">One-time pad (digits only)</label>
+        <textarea id="dec-pad" rows="2" placeholder="Enter matching pad digits…" autocomplete="off" spellcheck="false"></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Decoded numeric plaintext</label>
+        <div class="output-box mono" id="dec-numeric" aria-live="polite">—</div>
+      </div>
+
+      <div class="field-group">
+        <label>Decoded message</label>
+        <div class="output-box" id="dec-readable" aria-live="polite">—</div>
+      </div>
+
+      <div class="hint error" id="dec-error" aria-live="assertive"></div>
+      <div class="hint warn" id="dec-warn" aria-live="polite"></div>
+    </section>
+
+    <!-- ═══════════════════════ RULES ═══════════════════════ -->
+    <section id="rules">
+      <h2>Quick Rules &amp; Explanation</h2>
+      <div class="rules-content">
+        <h3>How encoding works</h3>
+        <ol>
+          <li>Convert your plaintext to a <strong>numeric string</strong> using the chart above.</li>
+          <li>The first <strong>5 digits</strong> of your pad are the <em>pad identifier</em> — they are copied directly to the front of the encoded message unchanged.</li>
+          <li>For every subsequent plaintext digit, subtract the corresponding pad digit and apply mod 10:<br>
+            <code>encoded = (plaintext − pad + 10) mod 10</code></li>
+          <li>The final encoded message = pad identifier (5 digits) + all encrypted digits.</li>
+        </ol>
+
+        <h3>How decoding works</h3>
+        <ol>
+          <li>The first 5 digits of the encoded message and the first 5 digits of the pad must match — that is the <em>pad identifier</em>.</li>
+          <li>For every subsequent encoded digit, add the corresponding pad digit and apply mod 10:<br>
+            <code>plaintext = (encoded + pad) mod 10</code></li>
+          <li>Convert the resulting numeric string back to text using the chart.</li>
+        </ol>
+
+        <h3>Letter vs. Number mode</h3>
+        <ul>
+          <li>The decoder always starts in <strong>Letter mode</strong>.</li>
+          <li>The code <strong>90 (FIG)</strong> toggles between Letter mode and Number mode.</li>
+          <li>In Letter mode, single-digit codes 1–6 map to A E I N O T; two-digit codes 70–99 map to the rest of the alphabet and special characters.</li>
+          <li>In Number mode, digits 0–9 decode directly as numeric characters.</li>
+          <li>To encode a run of digits in a message, a <strong>FIG (90)</strong> is inserted before the run and another <strong>FIG (90)</strong> is inserted after.</li>
+        </ul>
+
+        <h3>Classroom security note</h3>
+        <p>This app uses the browser's <code>crypto.getRandomValues()</code> API, which is cryptographically strong for classroom demonstrations. However, a true one-time pad requires:</p>
+        <ul>
+          <li>Truly random pads (from physical entropy sources)</li>
+          <li>Strict key secrecy and one-time-only use</li>
+          <li>Secure out-of-band pad exchange between parties</li>
+          <li>Immediate destruction of the pad after use</li>
+        </ul>
+        <p>Browser-generated pads are <em>not</em> suitable for real cryptographic security.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>CT No 1 English — One-Time Pad Classroom Tool</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
