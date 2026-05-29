@@ -220,6 +220,33 @@ button {
 button:hover { background: var(--primary-dark); }
 button:active { transform: scale(.98); }
 
+/* ── Label row (label + small action button) ──────────────── */
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .4rem;
+}
+
+.label-row label { margin-bottom: 0; }
+
+.secondary-btn {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  padding: .18rem .6rem;
+  font-size: .78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+
+.secondary-btn:hover {
+  background: var(--accent);
+  color: var(--primary-dark);
+}
+
 /* ── Output + inline copy button ──────────────────────────── */
 .output-with-copy {
   display: flex;

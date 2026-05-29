@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>One-Time Pad Encoder / Decoder — CT No 1 English</title>
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <header>
@@ -98,7 +98,10 @@
       </div>
 
       <div class="field-group">
-        <label for="enc-pad">One-time pad (digits only)</label>
+        <div class="label-row">
+          <label for="enc-pad">One-time pad (digits only)</label>
+          <button class="secondary-btn" id="enc-copy-pad" type="button">Copy Pad</button>
+        </div>
         <textarea id="enc-pad" rows="2" placeholder="Enter pad digits or generate below…" autocomplete="off" spellcheck="false"></textarea>
         <div class="hint" id="enc-pad-status" aria-live="polite"></div>
       </div>
@@ -135,12 +138,18 @@
       <h2>Decode a Message</h2>
 
       <div class="field-group">
-        <label for="dec-encoded">Encoded message (digits, spaces OK)</label>
+        <div class="label-row">
+          <label for="dec-encoded">Encoded message (digits, spaces OK)</label>
+          <button class="secondary-btn" id="dec-fill-encoded" type="button">↑ Use encoded message</button>
+        </div>
         <textarea id="dec-encoded" rows="2" placeholder="Paste encoded digits here…" autocomplete="off" spellcheck="false"></textarea>
       </div>
 
       <div class="field-group">
-        <label for="dec-pad">One-time pad (digits only)</label>
+        <div class="label-row">
+          <label for="dec-pad">One-time pad (digits only)</label>
+          <button class="secondary-btn" id="dec-fill-pad" type="button">↑ Use pad from encode</button>
+        </div>
         <textarea id="dec-pad" rows="2" placeholder="Enter matching pad digits…" autocomplete="off" spellcheck="false"></textarea>
       </div>
 

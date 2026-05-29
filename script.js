@@ -378,6 +378,29 @@ function handleCopyGrouped() {
   }).catch(() => {});
 }
 
+function handleCopyPad() {
+  const text = el('enc-pad').value.replace(/\D/g, '');
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(() => {
+    flashCopyBtn('enc-copy-pad');
+  }).catch(() => {});
+}
+
+function handleFillDecodeEncoded() {
+  const raw = el('enc-raw').textContent;
+  if (!raw || raw === '—') return;
+  el('dec-encoded').value = raw;
+  tryDecode();
+  el('dec-encoded').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function handleFillDecodePad() {
+  const pad = el('enc-pad').value.replace(/\D/g, '');
+  if (!pad) return;
+  el('dec-pad').value = pad;
+  tryDecode();
+}
+
 // ── Decode UI ─────────────────────────────────────────────────────────────────
 
 function tryDecode() {
@@ -421,9 +444,12 @@ document.addEventListener('DOMContentLoaded', () => {
   el('enc-generate-pad').addEventListener('click', handleGeneratePad);
   el('enc-copy-raw').addEventListener('click', handleCopyRaw);
   el('enc-copy-grouped-btn').addEventListener('click', handleCopyGrouped);
+  el('enc-copy-pad').addEventListener('click', handleCopyPad);
 
   el('dec-encoded').addEventListener('input', tryDecode);
   el('dec-pad').addEventListener('input', tryDecode);
+  el('dec-fill-encoded').addEventListener('click', handleFillDecodeEncoded);
+  el('dec-fill-pad').addEventListener('click', handleFillDecodePad);
 });
 
 // ── Self-test ─────────────────────────────────────────────────────────────────
